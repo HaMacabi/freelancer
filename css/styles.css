@@ -1,0 +1,275 @@
+:root { /*seudoelector para almacenar variables con valores definidos, en este caso una paleta de valores*/
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    --gris: #757575;
+    --grisClaro: #DFE9F3;
+}
+/*  Globales **/
+html {
+    font-size: 62.5%; /*para facilitar el uso de los rem que se adapta a cualquier tipo de disp*/
+    box-sizing: border-box; /* Hack para Box Model *//*a todos los elementos aplica el box sizing*/
+    scroll-snap-type: y mandatory;
+}
+/** Scroll Snap**/
+.servicios,
+.navegacion-principal,
+.formulario {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+*, *:before, *:after { 
+    box-sizing: inherit;
+    /* el asterisco es como un selector universal; selecciona todos los elementos del html*/
+}
+body {
+    font-size: 16px; /* 1rem = 16px */
+    font-family: 'Krub', sans-serif; /*agrego el krub*/
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100% );
+    /*dgr de abajo hacia arriba*/
+}
+.contenedor {
+    max-width: 120rem; /* toma 120 ecomo max, y si no tomará el 100% disponible*/
+    margin: 0 auto;/*para posicionar los elementos a los 4 lados;en este caso sin separacion*/
+    /*margin-top es espacio hacia arriba; 
+    margin-right hacia la derecha;
+    margin-bottom hacia abajo;
+    margin-left hacia la izq; el auto es para aplicar automaticamente, para ambos lados
+    */
+}
+.boton {
+
+    background-color: var(--secundario);
+    color: var(--blanco);
+    /*padding: 1rem 3rem 1rem 3rem;*/
+    padding: 1rem 3rem;
+    margin-top: 3rem;/*separacion del elemento de arriba*/
+    font-size: 2rem;
+    text-decoration: none; /*sin linea*/
+    text-transform: uppercase; /*may*/
+    font-weight: bold; /*como negrita*/
+    border-radius: .5rem; /*esq redondeada*/
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 768px) { /*en un disp de 768px*/
+    .boton {
+        width: auto; /*que el ancho sea aut.*/
+    }
+}
+.boton:hover {
+    cursor: pointer;
+}
+
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* Tipografia */
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.8rem;
+}
+h3 {
+    font-size: 1.8rem;
+}
+h1,h2,h3 {
+    text-align: center;
+}
+
+
+/* Titulos */
+.titulo span {
+    font-size: 2rem;
+}
+
+/** Utilidades **/
+.w-sm-100 {
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .w-sm-100 {
+        width: auto;
+    }
+}
+.flex { 
+    display: flex;
+}
+.alinear-derecha {
+    justify-content: flex-end;
+}
+
+/* Navegacion Principal */
+.nav-bg {
+    background-color: var(--secundario);
+    /* para extender el color de fondo hasta las orillas; toma el esp disponible*/
+}
+.navegacion-principal {
+    display: flex; /*para habilitar flexbox para acceder a nuevas propiedades de flex*/
+    flex-direction: column; /*de arriba hacia abajo*/
+    /*align-items: center; para alinear items verticalmente (cuando hay un el flex column */
+    /*padding: 1rem;*/
+}
+@media (min-width: 768px) { /*para tablets hasta más; 480px es para moviles; 1140px es para laptop y pc; 1400 para tv*/
+    .navegacion-principal {
+        flex-direction: row; /*reiniciar a fila que es el default*/
+        justify-content: space-between; /* just. content es para mover contenido horizontalmente*/
+        /*esp bet es para distribuir equitativamente  */
+    }
+}
+
+.navegacion-principal a { /*selec el enlace*/
+    display: block;
+    text-align: center;
+    color: var(--blanco); /* los enl son blancos*/
+    text-decoration: none; /*sin líneas*/
+    font-size: 2rem; /*tamaño*/
+    font-weight: bold; /*grosor*/
+    padding: 1rem; /* en todas las direc*/
+    /*display:block: un elemento sobre otro, como los p (en forma de columna)*/
+    /*display:inline: elementos hacia la derecha, como la nav (en fila) */
+    /*la diferencia entra margin y padding es que el espacio del primero es hacia afuer
+    y el segundo hacia dentro
+     */
+}
+.navegacion-principal a:hover { /*seudo clase para dar el efecto a la hora de pasar la mano en el enlace*/
+    background-color: var(--primario); /*fondo amarillo*/
+    color: var(--oscuro);
+}
+
+/* Hero */
+.hero {
+    background-image: url(../img/hero.jpg); /*cargo imagen de fondo*/
+    background-repeat: no-repeat; /*que no se repita */
+    background-size: cover; /*tamaño de la imagen que abarque todo el ancho*/
+    height: 450px; /*ALTURA*/
+    position: relative;
+    margin-bottom: 2rem;
+}
+.contenido-hero {
+    position: absolute; /*al padre se le pone relative*/
+    background-color: rgba( 0,0,0, .7 ); /** Anterior **/
+    background-color: rgb( 0 0 0 / 70% );
+    width: 100%;
+    height: 100%;
+
+    /*este codigo es para centrar horizontal y verticalmente*/
+    display: flex; /*por defecto es row, de izquiera a derecha*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.contenido-hero h2, 
+.contenido-hero p {
+    color: var(--blanco);
+}
+.contenido-hero .ubicacion {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+
+/** Servicios **/
+@media (min-width: 768px) { /*dividido en 3 vert*/
+    .servicios {
+        display: grid; /*añade prop de grid*/
+        grid-template-columns: repeat(3, 1fr); /*3 columnas dividas en 1fr (100%)*/
+        column-gap: 1rem; /*para agregar separacion entre elementos (colum)*/
+    }
+}
+
+.servicio {
+    display: flex; /*llamo a flex*/
+    flex-direction: column; /*lo cambio a column*/
+    align-items: center; /*centro*/
+}
+.servicio h3 {
+    color: var(--secundario);
+    font-weight: normal;
+}
+.servicio p {
+    line-height: 2; /*interlineado*/
+    text-align: center;
+}
+.servicio .iconos { /*estilos a iconos amarillos*/
+    height: 15rem;
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%; /*para hacerlos redondos*/
+    display: flex; /*recordemos que por defecto es row (fila)*/
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/** Contacto **/
+.formulario {
+    background-color: var(--gris);
+    width: min( 60rem, 100% ); /** Utilizar el valor más pequeño **/
+    margin: 0 auto; /**cuando el padre no tiene flex; por defecto es block*/
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.formulario fieldset {
+    border: none; /*eliminamos borde de form*/
+}
+.formulario legend {
+    text-align: center;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+
+@media (min-width: 768px) {
+    .contenedor-campos {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem ;
+        column-gap: 1rem;
+    }
+
+    .campo:nth-child(3),
+    .campo:nth-child(4) {
+        grid-column: 1 / 3;
+    }
+}
+.campo {
+    margin-bottom: 1rem;
+}
+.campo label {
+    color: var(--blanco);
+    font-weight: bold;
+    margin-bottom: .5rem;
+    display: block;
+}
+.campo textarea {
+    height: 20rem;
+}
+
+.input-text {
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+}
+
+/** Footer **/
+.footer {
+    text-align: center;
+}
+
+/*
+Prueba
+*/
